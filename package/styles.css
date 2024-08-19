@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#header {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: space-between;
+}
+
+#grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Space between icons */
+    padding: 20px;
+    justify-content: flex-start; /* Align icons to the left */
+    margin: 0 auto;
+    max-width: calc(100px * 10 + 10px * 9); /* Ensure grid container wraps after 10 icons */
+}
+
+.icon {
+    flex: 1 1 9%; /* Adjusted to ensure alignment consistency */
+    max-width: 100px; /* Set a max-width for the icons */
+    height: 100px; /* Fixed height for the icons */
+    background-color: #ccc;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+}
+
+body.night-mode #header {
+    background-color: #222222;
+}
+
+body.night-mode {
+    background-color: #222222;
+    color: #ffffff;
+}
+
+body.night-mode .icon {
+    background-color: #444;
+    color: #ffffff;
+}
