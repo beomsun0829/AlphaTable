@@ -3,8 +3,19 @@
     "description": "",
     "version": "1.0",
     "manifest_version": 3,
+    "permissions":["storage", "tabs"],
     "chrome_url_overrides":{
-        "newtab": "index.html"
+        "newtab": "src/index.html"
     },
-    "permissions":["storage"]
-  }
+    "action":{
+        "default_popup": "src/popup/popup.html"
+    },
+    "commands":{
+        "_execute_action":{
+            "suggested_key":{
+                "default": "Alt+Q"
+            },
+            "description": "Open the extension popup"
+        }
+    }
+}

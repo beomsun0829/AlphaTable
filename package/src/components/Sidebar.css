@@ -1,0 +1,107 @@
+.app-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar {
+    width: 200px;
+    transition: width 0.2s ease;
+    border: 0;
+    background-color: #333333;
+    color: #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.sidebar.collapsed {
+    width: 60px;
+}
+
+.sidebar .collapse-button {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+    background-color: inherit;
+    border: none;
+    text-align: left;
+}
+
+.sidebar .collapse-button img {
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.sidebar li {
+    margin: 10px 0;
+}
+
+.bookmarks-sidebar {
+    background-color: #333333;
+    color: #e0e0e0;
+    text-align: left;
+}
+
+.tabs-sidebar {
+    background-color: #333333;
+    color: #e0e0e0;
+    text-align: left;
+}
+
+.tab-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tab-item {
+    margin-bottom: 10px;
+}
+
+.tab-button {
+    display: flex;
+    align-items: center;
+    background-color: #404056;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    text-align: left;
+    transition: background-color 0.2s;
+}
+
+.tab-button:hover {
+    background-color: #57576d;
+}
+
+.tab-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+.tab-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+}

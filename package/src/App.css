@@ -1,12 +1,16 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
 }
 
 #header {
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #222222; /* Dark header background */
     display: flex;
     justify-content: flex-end;
     gap: 10px;
@@ -15,36 +19,29 @@ body {
 #grid-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px; /* Space between icons */
-    padding: 10%;
-    justify-content: flex-start; /* Align icons to the left */
+    gap: 10px;
+    padding-top: 100px;
+    justify-content: flex-start;
     margin: 0 auto;
-    max-width: calc(100px * 10 + 10px * 9); /* Ensure grid container wraps after 10 icons */
+    max-width: calc(100px * 10 + 10px * 9);
 }
 
 .icon {
-    flex: 1 1 9%; /* Adjusted to ensure alignment consistency */
-    max-width: 100px; /* Set a max-width for the icons */
-    height: 100px; /* Fixed height for the icons */
-    background-color: #ccc;
-    border-radius: 5px;
+    flex: 1 1 9%;
+    max-width: 100px;
+    min-width: 100px;
+    height: 100px;
+    background-color: #444444; /* Dark icon background */
+    border-radius: 7px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-sizing: border-box; /* Ensure padding and border are included in the width and height */
+    box-sizing: border-box;
+    color: #ffffff; /* White text on icons */
 }
 
-body.night-mode #header {
-    background-color: #222222;
-}
-
-body.night-mode {
-    background-color: #222222;
-    color: #ffffff;
-}
-
-body.night-mode .icon {
-    background-color: #444;
-    color: #ffffff;
+body {
+    background-color: #222222; /* Dark background for the body */
+    color: #ffffff; /* White text color */
 }
