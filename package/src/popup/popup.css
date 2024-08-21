@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
     margin: 0;
-    padding: 10px;
+    padding: 0px;
     background-color: #333333;
     color: #ffffff;
     width: 300px;
@@ -10,7 +10,7 @@ body {
 }
 
 #popup-container {
-    margin: 5px;
+    padding: 5px;
 }
 
 h1 {
@@ -35,7 +35,7 @@ h1 {
     color: #ffffff;
     border: none;
     border-radius: 6px;
-    padding: 5px;
+    padding: 7px;
     width: 100%;
     cursor: pointer;
     text-align: left;
