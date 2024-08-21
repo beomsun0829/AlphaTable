@@ -11,7 +11,7 @@
 }
 
 .sidebar {
-    width: 200px;
+    width: 300px;
     transition: width 0.2s ease;
     border: 0;
     background-color: #333333;
@@ -57,6 +57,10 @@
     background-color: #333333;
     color: #e0e0e0;
     text-align: left;
+}
+
+.bookmarks-sidebar .collapse-button{
+    text-align: right;
 }
 
 .tabs-sidebar {
