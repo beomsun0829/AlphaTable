@@ -2,19 +2,23 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0px;
-    background-color: #2c3e50; /* Darker background to match the side panel */
+    background-color: #2c3e50; /* Darker background */
     color: #ffffff;
-    width: 300px;
-    height: 400px;
     overflow-y: auto;
 }
 
-#popup-container {
-    padding: 5px;
-    background: rgba(255, 255, 255, 0.05); /* Very subtle transparency to match side panel */
+#sidepanel-container {
+    padding: 7px;
+    background: rgba(255, 255, 255, 0.05); /* Very subtle transparency */
     border-radius: 12px;
     backdrop-filter: blur(8px); /* Slight frosted glass effect */
     -webkit-backdrop-filter: blur(8px);
+}
+
+h1 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #e0e0e0; /* Lighter text for headings */
 }
 
 #tab-list {
@@ -30,16 +34,16 @@ body {
 }
 
 .tab-item {
-    margin-bottom: 5px; /* Slightly smaller margin */
+    margin-bottom: 8px; /* Slightly smaller margin */
 }
 
 .tab-button {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.08); /* Darker background for the button */
-    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08); /* Darker background */
+    color: #ffffff; /* Slightly muted text color */
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     padding: 7px;
     width: 100%;
     cursor: pointer;
@@ -50,7 +54,7 @@ body {
 }
 
 .tab-button:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 .tab-icon {

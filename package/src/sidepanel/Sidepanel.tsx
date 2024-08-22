@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
-import './popup.css';
+import './Sidepanel.css';
 
 interface ChromeTab {
     id: number;
@@ -10,12 +10,12 @@ interface ChromeTab {
     active: boolean;
 }
 
-const Popup: React.FC = () => {
+const Sidepanel: React.FC = () => {
     const [tabs, setTabs] = useState<ChromeTab[]>([]);
     const activeTabRef = useRef<HTMLLIElement | null>(null);
 
-    useEffect(() => {
-        chrome.tabs.query({}, function(tabsArray) {
+    const updateTabs = () => {
+        chrome.tabs.query({}, function (tabsArray) {
             const tabsList = tabsArray.map(tab => ({
                 id: tab.id!,
                 title: tab.title || 'No title',
@@ -25,6 +25,25 @@ const Popup: React.FC = () => {
             }));
             setTabs(tabsList);
         });
+    };
+
+    useEffect(() => {
+        // Initial tab loading
+        updateTabs();
+
+        // Listen for tab activation and updates
+        const handleTabChange = () => {
+            updateTabs();
+        };
+
+        chrome.tabs.onActivated.addListener(handleTabChange);
+        chrome.tabs.onUpdated.addListener(handleTabChange);
+
+        // Cleanup listeners on component unmount
+        return () => {
+            chrome.tabs.onActivated.removeListener(handleTabChange);
+            chrome.tabs.onUpdated.removeListener(handleTabChange);
+        };
     }, []);
 
     useEffect(() => {
@@ -53,4 +72,4 @@ const Popup: React.FC = () => {
     );
 };
 
-ReactDOM.render(<Popup />, document.getElementById('popup-container'));
+ReactDOM.render(<Sidepanel />, document.getElementById('sidepanel-container'));
