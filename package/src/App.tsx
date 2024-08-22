@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-import BookmarksSidebar from './components/BookmarksSidebar';
-import TabsSidebar from './components/TabsSidebar';
+import BookmarksSidebar from './components/sidebar/BookmarksSidebar';
+import TabsSidebar from './components/sidebar/TabsSidebar';
 
 const App: React.FC = () => {
     const [icons, setIcons] = useState<number[]>([]);

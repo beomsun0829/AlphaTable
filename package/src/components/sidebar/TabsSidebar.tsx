@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
-import collapse_right from '../assets/collapse-right-svgrepo-com.svg';
-import collapse_left from '../assets/collapse-left-svgrepo-com.svg';
+import collapse_right from '../../assets/collapse-right-svgrepo-com.svg';
+import collapse_left from '../../assets/collapse-left-svgrepo-com.svg';
 
 interface TabsSidebarProps {
     isOpen: boolean;

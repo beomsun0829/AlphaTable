@@ -8,8 +8,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/index.html'),
-        popup: resolve(__dirname, 'src/popup/popup.html'),
-        sidepanel: resolve(__dirname, 'src/sidepanel/sidepanel.html')
+        popup: resolve(__dirname, 'src/components/popup/popup.html'),
+        sidepanel: resolve(__dirname, 'src/components/sidepanel/sidepanel.html')
       },
       output: {
         entryFileNames: '[name].js',
