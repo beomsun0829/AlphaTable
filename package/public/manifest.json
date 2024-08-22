@@ -8,10 +8,10 @@
         "newtab": "src/index.html"
     },
     "action":{
-        "default_popup": "src/popup/popup.html"
+        "default_popup": "src/components/popup/popup.html"
     },
     "side_panel":{
-        "default_path": "src/sidepanel/sidepanel.html",
+        "default_path": "src/components/sidepanel/sidepanel.html",
         "openPanelOnActionClick": true
     },
     "commands":{
