@@ -1,5 +1,5 @@
 {
-    "name": "Alpha Table",
+    "name": "Let Tab",
     "description": "",
     "version": "1.0",
     "manifest_version": 3,
@@ -17,7 +17,7 @@
     "commands":{
         "_execute_action":{
             "suggested_key":{
-                "default": "Alt+Q"
+                "default": "Alt + Q"
             },
             "description": "Open the extension popup"
         }
