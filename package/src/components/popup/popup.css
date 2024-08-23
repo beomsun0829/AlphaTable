@@ -22,11 +22,6 @@ body {
     margin: 0;
 }
 
-.tab-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border between items */
-    position: relative; /* Ensure the pseudo-element stays within bounds */
-}
-
 .tab-button {
     display: flex;
     align-items: center;
@@ -49,7 +44,7 @@ body {
 
 /* Updated gradient background for active tab */
 .active-tab {
-    background: linear-gradient(to right, rgba(166, 0, 0, 0.3), rgba(255, 255, 255, 0.08)); /* Gradient effect */
+    background: linear-gradient(to right, rgba(0, 125, 255, 0.3), rgba(255, 255, 255, 0.05)); /* Gradient effect */
     transition: background-color 0.1s, transform 0.1s;
 }
 
