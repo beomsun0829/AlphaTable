@@ -54,7 +54,7 @@
     color: #ffffff;
     border: none;
     padding: 12px 15px;
-    height: 45px;
+    height: 42px;
     width: 100%;
     cursor: pointer;
     text-align: left;
@@ -64,7 +64,7 @@
 }
 
 .sidebar.collapsed .tab-button {
-    height: 45px;
+    height: 42px;
 }
 
 .tab-button:hover {
