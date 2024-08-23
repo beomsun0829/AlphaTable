@@ -1,71 +1,37 @@
-.app-container {
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.content {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-}
-
+/* ------ Sidebar General Styles ------ */
 .sidebar {
     width: 250px;
     transition: width 0.2s ease;
     border: 0;
-    background-color: #333333;
-    color: #e0e0e0;
+    color: #ffffff;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
     height: 100vh;
+    backdrop-filter: blur(8px); /* Slight frosted glass effect */
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .sidebar.collapsed {
-    width: 60px;
-}
-
-.sidebar .collapse-button {
-    width: 100%;
-    padding: 10px;
-    cursor: pointer;
-    background-color: inherit;
-    border: none;
-    text-align: left;
-}
-
-.sidebar .collapse-button img {
-    width: 32px;
-    height: 32px;
-    vertical-align: middle;
+    width: 50px;
 }
 
 .sidebar ul {
     list-style: none;
-    padding: 10px;
+    padding: 0;
     margin: 0;
     overflow-y: auto;
     flex-grow: 1;
 }
 
 .sidebar li {
-    margin: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border between items */
 }
 
-.bookmarks-sidebar {
-    background-color: #333333;
-    color: #e0e0e0;
-    text-align: left;
-}
-
-.bookmarks-sidebar .collapse-button{
-    text-align: right;
-}
-
+/* Tabs Sidebar Styling */
 .tabs-sidebar {
-    background-color: #333333;
-    color: #e0e0e0;
+    background: linear-gradient(to bottom, #0b2846, #303030); /* Add a gradient background */
+    color: #ffffff;
     text-align: left;
 }
 
@@ -76,29 +42,33 @@
 }
 
 .tab-item {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    position: relative; /* To position the active-tab gradient */
 }
 
 .tab-button {
     display: flex;
     align-items: center;
-    background-color: #404056;
+    background-color: rgba(255, 255, 255, 0.1); /* Darker background for the button */
     color: #ffffff;
     border: none;
-    border-radius: 6px;
-    padding: 10px;
+    padding: 10px 15px;
     width: 100%;
     cursor: pointer;
     text-align: left;
-    transition: background-color 0.2s;
+    transition: background-color 0.1s, transform 0.1s;
+    backdrop-filter: blur(8px); /* Light blur for the glass effect */
+    -webkit-backdrop-filter: blur(8px);
+    box-sizing: border-box; /* Include padding in the element's width */
 }
 
 .tab-button:hover {
-    background-color: #57576d;
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
 }
 
 .tab-icon {
-    width: 16px;
+    width: 16px; /* Smaller icon size */
     height: 16px;
     margin-right: 10px;
 }
@@ -108,4 +78,75 @@
     overflow: hidden;
     text-overflow: ellipsis;
     flex-grow: 1;
+    font-weight: 400; /* Normal weight */
+    font-size: 14px; /* Smaller font size */
+    color: #ffffff; /* Muted color for titles */
+}
+
+.sidebar.collapsed .tab-title {
+    display: none; /* Hide title when sidebar is collapsed */
+}
+
+/* Updated gradient background for active tab */
+.active-tab {
+    background: linear-gradient(to right, rgba(166, 0, 0, 0.3), rgba(255, 255, 255, 0.08)); /* Gradient effect */
+    transition: background-color 0.1s, transform 0.1s;
+}
+
+/* ------ Styles for Expand/Collapse Icons ------ */
+.icon-container {
+    --color: #a5a5b0;
+    --size: 24px;
+    font-size: var(--size);
+    padding: 12px;
+    margin-bottom:10px;
+    margin-top:10px;
+    display: flex;
+    justify-content: flex-start; /* Align icons to the right */
+    align-items: center; /* Center icons vertically */
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    color: #ffffff;
+}
+
+.icon-container img.expand,
+.icon-container img.compress {
+    width: var(--size);
+    height: var(--size);
+    color: var(--color);
+    filter: brightness(0) invert(1);
+    animation: keyframes-fill 0.5s;
+}
+
+.icon-container img.compress {
+    display: none;
+}
+
+.icon-container input:checked ~ img.expand {
+    display: none;
+}
+
+.icon-container input:checked ~ img.compress {
+    display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.icon-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
 }

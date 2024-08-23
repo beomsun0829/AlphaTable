@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import './App.css';
-import BookmarksSidebar from './components/sidebar/BookmarksSidebar';
 import TabsSidebar from './components/sidebar/TabsSidebar';
 
 const App: React.FC = () => {
     const [icons, setIcons] = useState<number[]>([]);
     const [isLeftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(true);
-    const [isRightSidebarOpen, setRightSidebarOpen] = useState<boolean>(true);
 
     const addIcon = () => {
         setIcons([...icons, icons.length + 1]);
@@ -16,13 +14,9 @@ const App: React.FC = () => {
         setLeftSidebarOpen(!isLeftSidebarOpen);
     };
 
-    const toggleRightSidebar = () => {
-        setRightSidebarOpen(!isRightSidebarOpen);
-    };
-
     return (
         <div className="app-container">
-            <BookmarksSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} />
+            <TabsSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} />
             <main className="content">
                 <div id="header">
                     <button id="add-icon" onClick={addIcon}>Add Icon</button>
@@ -35,7 +29,6 @@ const App: React.FC = () => {
                     ))}
                 </div>
             </main>
-            <TabsSidebar isOpen={isRightSidebarOpen} toggleSidebar={toggleRightSidebar} />
         </div>
     );
 };

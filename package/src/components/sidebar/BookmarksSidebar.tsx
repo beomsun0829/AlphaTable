@@ -1,7 +1,7 @@
 import React from 'react';
 import './Sidebar.css';
-import collapse_right from '../../assets/collapse-right-svgrepo-com.svg';
-import collapse_left from '../../assets/collapse-left-svgrepo-com.svg';
+import expandIcon from '../../assets/expand.svg';
+import compressIcon from '../../assets/compress.svg';
 
 interface BookmarksSidebarProps {
     isOpen: boolean;
@@ -11,9 +11,11 @@ interface BookmarksSidebarProps {
 const BookmarksSidebar: React.FC<BookmarksSidebarProps> = ({ isOpen, toggleSidebar }) => {
     return (
         <div className={`sidebar bookmarks-sidebar ${isOpen ? 'open' : 'collapsed'}`}>
-            <button onClick={toggleSidebar} className='collapse-button'>
-                <img src={isOpen ? collapse_left : collapse_right} alt = "Toggle Sidebar"/>
-            </button>
+            <label className="icon-container">
+                <input checked={isOpen} type="checkbox" onChange={toggleSidebar} />
+                <img src={expandIcon} className="expand" alt="Expand" />
+                <img src={compressIcon} className="compress" alt="Compress" />
+            </label>
             {isOpen && (
                 <ul>
                     <li>Bookmark 1</li>

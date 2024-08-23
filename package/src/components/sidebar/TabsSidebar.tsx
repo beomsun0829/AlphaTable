@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Sidebar.css';
-import collapse_right from '../../assets/collapse-right-svgrepo-com.svg';
-import collapse_left from '../../assets/collapse-left-svgrepo-com.svg';
+import expandIcon from '../../assets/expand.svg';
+import compressIcon from '../../assets/compress.svg';
 
 interface TabsSidebarProps {
     isOpen: boolean;
@@ -13,34 +13,42 @@ interface ChromeTab {
     title: string;
     url: string;
     favIconUrl?: string;
+    active: boolean;
 }
 
 const TabsSidebar: React.FC<TabsSidebarProps> = ({ isOpen, toggleSidebar }) => {
     const [tabs, setTabs] = useState<ChromeTab[]>([]);
+    const activeTabRef = useRef<HTMLLIElement | null>(null);
 
     useEffect(() => {
         if (isOpen) {
             if (typeof chrome !== "undefined" && chrome.tabs) {
-                // Fetch tabs from Chrome API
                 chrome.tabs.query({}, function(tabsArray: chrome.tabs.Tab[]) {
                     const tabsList = tabsArray.map((tab: chrome.tabs.Tab) => ({
                         id: tab.id as number,
                         title: tab.title || 'No title',
                         url: tab.url as string,
-                        favIconUrl: tab.favIconUrl
+                        favIconUrl: tab.favIconUrl,
+                        active: tab.active || false
                     }));
                     setTabs(tabsList);
                 });
             } else {
                 const dummyTabs = [
-                    { id: 1, title: "Dummy Tab 1", url: "https://example.com" },
-                    { id: 2, title: "Dummy Tab 2", url: "https://example.com" },
-                    { id: 3, title: "Dummy Tab 3", url: "https://example.com" }
+                    { id: 1, title: "Dummy Tab 1", url: "https://example.com", active: true, favIconUrl: 'path/to/icon1.png' },
+                    { id: 2, title: "Dummy Tab 2", url: "https://example.com", active: false, favIconUrl: 'path/to/icon2.png' },
+                    { id: 3, title: "Dummy Tab 3", url: "https://example.com", active: false, favIconUrl: 'path/to/icon3.png' }
                 ];
                 setTabs(dummyTabs);
             }
         }
     }, [isOpen]);
+
+    useEffect(() => {
+        if (activeTabRef.current) {
+            activeTabRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, [tabs]);
 
     const switchToTab = (tabId: number) => {
         if (typeof chrome !== "undefined" && chrome.tabs) {
@@ -50,21 +58,25 @@ const TabsSidebar: React.FC<TabsSidebarProps> = ({ isOpen, toggleSidebar }) => {
 
     return (
         <div className={`sidebar tabs-sidebar ${isOpen ? 'open' : 'collapsed'}`}>
-            <button onClick={toggleSidebar} className='collapse-button'>
-                <img src={isOpen ? collapse_right : collapse_left} alt="Toggle Sidebar" />
-            </button>
-            {isOpen && (
-                <ul className="tab-list">
-                    {tabs.map(tab => (
-                        <li key={tab.id} className="tab-item">
-                            <button className="tab-button" onClick={() => switchToTab(tab.id)} title={tab.url}>
-                                {tab.favIconUrl && <img src={tab.favIconUrl} alt="Icon" className="tab-icon" />}
-                                <span className="tab-title">{tab.title}</span>
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-            )}
+            <label className="icon-container">
+                <input checked={isOpen} type="checkbox" onChange={toggleSidebar} />
+                <img src={expandIcon} className="expand" alt="Expand" />
+                <img src={compressIcon} className="compress" alt="Compress" />
+            </label>
+            <ul className="tab-list">
+                {tabs.map(tab => (
+                    <li
+                        key={tab.id}
+                        className={`tab-item ${tab.active ? 'active-tab' : ''}`}
+                        ref={tab.active ? activeTabRef : null}
+                    >
+                        <button className="tab-button" onClick={() => switchToTab(tab.id)} title={tab.url}>
+                            {tab.favIconUrl && <img src={tab.favIconUrl} alt="Icon" className="tab-icon" />}
+                            <span className="tab-title">{tab.title}</span>
+                        </button>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };

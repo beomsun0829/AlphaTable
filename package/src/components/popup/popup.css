@@ -4,17 +4,16 @@ body {
     padding: 0px;
     background-color: #2c3e50; /* Darker background to match the side panel */
     color: #ffffff;
-    width: 300px;
-    height: 400px;
+    width: 300px;  /* Constrain the popup width */
+    height: 400px;  /* Constrain the popup height */
     overflow-y: auto;
 }
 
 #popup-container {
-    padding: 5px;
-    background: rgba(255, 255, 255, 0.05); /* Very subtle transparency to match side panel */
-    border-radius: 12px;
     backdrop-filter: blur(8px); /* Slight frosted glass effect */
     -webkit-backdrop-filter: blur(8px);
+    width: 100%; /* Ensure the container respects the body width */
+    box-sizing: border-box; /* Include padding in the element's width */
 }
 
 #tab-list {
@@ -23,34 +22,35 @@ body {
     margin: 0;
 }
 
-.active-tab {
-    background-color: rgba(255, 255, 255, 0.15); /* Slightly more opaque for active tab */
-    border-left: 4px solid darkred; /* Thinner and more subtle border */
-    transition: background-color 0.1s, transform 0.1s;
-}
-
 .tab-item {
-    margin-bottom: 5px; /* Slightly smaller margin */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border between items */
+    position: relative; /* Ensure the pseudo-element stays within bounds */
 }
 
 .tab-button {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.08); /* Darker background for the button */
+    background-color: rgba(255, 255, 255, 0.05); /* Darker background for the button */
     color: #ffffff;
     border: none;
-    border-radius: 6px;
     padding: 7px;
     width: 100%;
     cursor: pointer;
     text-align: left;
     transition: background-color 0.1s, transform 0.1s;
-    backdrop-filter: blur(4px); /* Light blur for the glass effect */
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px); /* Light blur for the glass effect */
+    -webkit-backdrop-filter: blur(8px);
+    box-sizing: border-box; /* Include padding in the element's width */
 }
 
 .tab-button:hover {
     background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
+}
+
+/* Updated gradient background for active tab */
+.active-tab {
+    background: linear-gradient(to right, rgba(166, 0, 0, 0.3), rgba(255, 255, 255, 0.08)); /* Gradient effect */
+    transition: background-color 0.1s, transform 0.1s;
 }
 
 .tab-icon {

@@ -5,7 +5,7 @@
     "manifest_version": 3,
     "permissions":["storage", "tabs", "sidePanel"],
     "chrome_url_overrides":{
-        "newtab": "src/index.html"
+        "newtab": "index.html"
     },
     "action":{
         "default_popup": "src/components/popup/popup.html"
