@@ -30,7 +30,7 @@
 
 /* Tabs Sidebar Styling */
 .tabs-sidebar {
-    background: linear-gradient(to bottom, #0b2846, #303030); /* Add a gradient background */
+    background: linear-gradient(to bottom, #001a34, #243647); /* Add a gradient background */
     color: #ffffff;
     text-align: left;
 }
@@ -53,14 +53,18 @@
     background-color: rgba(255, 255, 255, 0.05); /* Darker background for the button */
     color: #ffffff;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 15px;
+    height: 45px;
     width: 100%;
     cursor: pointer;
     text-align: left;
     transition: background-color 0.1s, transform 0.1s;
     backdrop-filter: blur(8px); /* Light blur for the glass effect */
     -webkit-backdrop-filter: blur(8px);
-    box-sizing: border-box; /* Include padding in the element's width */
+}
+
+.sidebar.collapsed .tab-button {
+    height: 45px;
 }
 
 .tab-button:hover {

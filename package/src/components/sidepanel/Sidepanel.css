@@ -8,53 +8,43 @@ body {
 }
 
 #sidepanel-container {
-    padding: 7px;
-    background: rgba(255, 255, 255, 0.05); /* Very subtle transparency */
-    border-radius: 12px;
     backdrop-filter: blur(8px); /* Slight frosted glass effect */
     -webkit-backdrop-filter: blur(8px);
-}
-
-h1 {
-    font-size: 16px;
-    margin-bottom: 10px;
-    color: #e0e0e0; /* Lighter text for headings */
+    box-sizing: border-box; /* Include padding in the element's width */
 }
 
 #tab-list {
     list-style: none;
     padding: 0;
     margin: 0;
-}
-
-.active-tab {
-    background-color: rgba(255, 255, 255, 0.15); /* Slightly more opaque for active tab */
-    border-left: 4px solid darkred; /* Thinner and more subtle border */
-    transition: background-color 0.1s, transform 0.1s;
+    overflow-y: auto;
 }
 
 .tab-item {
-    margin-bottom: 8px; /* Slightly smaller margin */
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Light border between items */
 }
 
 .tab-button {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.08); /* Darker background */
+    background-color: rgba(255, 255, 255, 0.05); /* Darker background */
     color: #ffffff; /* Slightly muted text color */
     border: none;
-    border-radius: 8px;
-    padding: 7px;
+    padding: 10px 15px;
     width: 100%;
     cursor: pointer;
     text-align: left;
     transition: background-color 0.1s, transform 0.1s;
-    backdrop-filter: blur(4px); /* Light blur for the glass effect */
-    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(8px); /* Light blur for the glass effect */
+    -webkit-backdrop-filter: blur(8px);
+    box-sizing: border-box; /* Include padding in the element's width */
 }
 
 .tab-button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2); /* Slightly lighter on hover */
 }
 
 .tab-icon {
@@ -71,4 +61,66 @@ h1 {
     font-weight: 400; /* Normal weight */
     font-size: 14px; /* Smaller font size */
     color: #ffffff; /* Muted color for titles */
+}
+
+.active-tab {
+    background: linear-gradient(to right, rgba(166, 0, 0, 0.3), rgba(255, 255, 255, 0.08)); /* Gradient effect */
+    transition: background-color 0.1s, transform 0.1s;
+}
+
+.icon-container {
+    --color: #a5a5b0;
+    --size: 24px;
+    font-size: var(--size);
+    padding: 12px;
+    margin-bottom:10px;
+    margin-top:10px;
+    display: flex;
+    justify-content: flex-start; /* Align icons to the left */
+    align-items: center; /* Center icons vertically */
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    color: #ffffff;
+}
+
+.icon-container img.expand,
+.icon-container img.compress {
+    width: var(--size);
+    height: var(--size);
+    color: var(--color);
+    filter: brightness(0) invert(1);
+    animation: keyframes-fill 0.5s;
+}
+
+.icon-container img.compress {
+    display: none;
+}
+
+.icon-container input:checked ~ img.expand {
+    display: none;
+}
+
+.icon-container input:checked ~ img.compress {
+    display: block;
+}
+
+/* ------ Hide the default checkbox ------ */
+.icon-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+    }
 }

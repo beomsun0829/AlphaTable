@@ -32,11 +32,15 @@ const TabsSidebar: React.FC<TabsSidebarProps> = ({ isOpen, toggleSidebar }) => {
                     setTabs(tabsList);
                 });
             } else {
-                const dummyTabs = [
-                    { id: 1, title: "Dummy Tab 1", url: "https://example.com", favIconUrl: 'path/to/icon1.png' },
-                    { id: 2, title: "Dummy Tab 2", url: "https://example.com", favIconUrl: 'path/to/icon2.png' },
-                    { id: 3, title: "Dummy Tab 3", url: "https://example.com", favIconUrl: 'path/to/icon3.png' }
-                ];
+                const dummyTabs = [];
+                for (let i = 0; i < 30; i++) {
+                    dummyTabs.push({
+                        id: i + 1,
+                        title: `Dummy Tab ${i + 1}`,
+                        url: "https://example.com",
+                        favIconUrl: `path/to/icon${i + 1}.png`
+                    });
+                }
                 setTabs(dummyTabs);
             }
         }
