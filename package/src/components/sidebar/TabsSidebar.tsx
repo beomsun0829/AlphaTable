@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Sidebar.css';
 import expandIcon from '../../assets/expand.svg';
 import compressIcon from '../../assets/compress.svg';
@@ -13,12 +13,10 @@ interface ChromeTab {
     title: string;
     url: string;
     favIconUrl?: string;
-    active: boolean;
 }
 
 const TabsSidebar: React.FC<TabsSidebarProps> = ({ isOpen, toggleSidebar }) => {
     const [tabs, setTabs] = useState<ChromeTab[]>([]);
-    const activeTabRef = useRef<HTMLLIElement | null>(null);
 
     useEffect(() => {
         if (isOpen) {
@@ -35,20 +33,14 @@ const TabsSidebar: React.FC<TabsSidebarProps> = ({ isOpen, toggleSidebar }) => {
                 });
             } else {
                 const dummyTabs = [
-                    { id: 1, title: "Dummy Tab 1", url: "https://example.com", active: true, favIconUrl: 'path/to/icon1.png' },
-                    { id: 2, title: "Dummy Tab 2", url: "https://example.com", active: false, favIconUrl: 'path/to/icon2.png' },
-                    { id: 3, title: "Dummy Tab 3", url: "https://example.com", active: false, favIconUrl: 'path/to/icon3.png' }
+                    { id: 1, title: "Dummy Tab 1", url: "https://example.com", favIconUrl: 'path/to/icon1.png' },
+                    { id: 2, title: "Dummy Tab 2", url: "https://example.com", favIconUrl: 'path/to/icon2.png' },
+                    { id: 3, title: "Dummy Tab 3", url: "https://example.com", favIconUrl: 'path/to/icon3.png' }
                 ];
                 setTabs(dummyTabs);
             }
         }
     }, [isOpen]);
-
-    useEffect(() => {
-        if (activeTabRef.current) {
-            activeTabRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-    }, [tabs]);
 
     const switchToTab = (tabId: number) => {
         if (typeof chrome !== "undefined" && chrome.tabs) {
@@ -67,8 +59,7 @@ const TabsSidebar: React.FC<TabsSidebarProps> = ({ isOpen, toggleSidebar }) => {
                 {tabs.map(tab => (
                     <li
                         key={tab.id}
-                        className={`tab-item ${tab.active ? 'active-tab' : ''}`}
-                        ref={tab.active ? activeTabRef : null}
+                        className={'tab-item'}
                     >
                         <button className="tab-button" onClick={() => switchToTab(tab.id)} title={tab.url}>
                             {tab.favIconUrl && <img src={tab.favIconUrl} alt="Icon" className="tab-icon" />}
