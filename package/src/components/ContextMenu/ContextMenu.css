@@ -1,23 +1,38 @@
 .context-menu {
     position: absolute;
-    background-color: #333333;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    backdrop-filter: blur(10px); /* Blur the background behind the menu */
+    -webkit-backdrop-filter: blur(10px); /* Support for Safari */
     color: #ffffff;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
     z-index: 1000;
+    padding: 0; /* Remove padding to align buttons edge to edge */
+    display: flex;
+    flex-direction: column; /* Align items vertically */
 }
 
-.context-menu ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 10px;
-}
-
-.context-menu li {
-    padding: 8px 12px;
+.context-menu button {
+    border: none;
+    border-radius: 0; /* Remove rounding between buttons */
+    padding: 10px 15px;
+    color: #ffffff;
     cursor: pointer;
+    transition: background 0.2s ease;
+    text-align: left; /* Align text to the left */
+    width: 100%;
 }
 
-.context-menu li:hover {
-    background-color: #444444;
+.context-menu button:first-child {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.context-menu button:last-child {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.context-menu button:hover {
+    background: rgba(255, 255, 255, 0.3); /* Slightly more opaque on hover */
 }

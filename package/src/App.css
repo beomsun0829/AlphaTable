@@ -1,3 +1,10 @@
+body {
+    background-image: url('/wallpapersden.com_a-new-planet-4k-sunrise_3840x2152.jpg');
+    background-size: cover;
+    color: #ffffff;
+}
+
+
 .app-container {
     display: flex;
     height: 100vh;
@@ -6,42 +13,4 @@
 .content {
     flex-grow: 1;
     padding: 20px;
-}
-
-#header {
-    padding: 20px;
-    background-color: #222222; /* Dark header background */
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-}
-
-#grid-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    padding-top: 100px;
-    justify-content: flex-start;
-    margin: 0 auto;
-    max-width: calc(100px * 10 + 15px * 9);
-}
-
-.icon {
-    flex: 1 1 9%;
-    max-width: 100px;
-    min-width: 100px;
-    height: 100px;
-    background-color: #444444; /* Dark icon background */
-    border-radius: 7px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-sizing: border-box;
-    color: #ffffff; /* White text on icons */
-}
-
-body {
-    background-color: #222222; /* Dark background for the body */
-    color: #ffffff; /* White text color */
 }

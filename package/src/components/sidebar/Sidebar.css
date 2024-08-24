@@ -26,7 +26,7 @@
 
 /* Tabs Sidebar Styling */
 .tabs-sidebar {
-    background: linear-gradient(to bottom, #001a34, #243647); /* Add a gradient background */
+    background: linear-gradient(to bottom, rgba(0, 26, 52, 0.3), rgba(36, 54, 71, 0.3)); /* Gradient background with transparency */
     color: #ffffff;
     text-align: left;
 }
@@ -46,7 +46,7 @@
 .tab-button {
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.05); /* Darker background for the button */
+    background-color: rgba(255, 255, 255, 0.07); /* Darker background for the button */
     color: #ffffff;
     border: none;
     padding: 12px 15px;

@@ -1,0 +1,30 @@
+#grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding-top: 50px;
+    justify-content: flex-start;
+    margin: 0 auto;
+    max-width: calc(100px * 8 + 30px * 7);
+}
+
+.widget-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    color: #ffffff;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+}
+
+.widget-box img{
+    width: 50px;
+    height: 50px;
+    border-radius: 7px;
+    object-fit: cover;
+}

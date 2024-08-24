@@ -1,21 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
 import TabsSidebar from './components/sidebar/TabsSidebar';
-import ContextMenu from './components/ContextMenu/ContextMenu';
+import Header from './components/Header/Header';
+import WidgetsGrid from './components/WidgetsGrid/WidgetsGrid';
 
 const App: React.FC = () => {
-    const [icons, setIcons] = useState<number[]>([]);
     const [isLeftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(true);
     const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
-
-    const addIcon = () => {
-        setIcons([...icons, icons.length + 1]);
-        setContextMenu(null);
-    };
-
-    const addWidget = () => {
-        setContextMenu(null);
-    };
+    const [isAddWidgetModalOpen, setAddWidgetModalOpen] = useState<boolean>(false);
 
     const toggleLeftSidebar = () => {
         setLeftSidebarOpen(!isLeftSidebarOpen);
@@ -30,30 +22,24 @@ const App: React.FC = () => {
         setContextMenu(null);
     };
 
+    const openAddWidgetModal = () => {
+        setContextMenu(null);
+        setAddWidgetModalOpen(true);
+    };
+
     return (
         <div className="app-container" onContextMenu={handleRightClick}>
             <TabsSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} />
             <main className="content">
-                <div id="header">
-                    <h1>Let Tab</h1>
-                </div>
-                <div id="grid-container">
-                    {icons.map((icon, index) => (
-                        <div key={index} className="icon">
-                            {icon}
-                        </div>
-                    ))}
-                </div>
-            </main>
-            {contextMenu && (
-                <ContextMenu
-                    x={contextMenu.x}
-                    y={contextMenu.y}
-                    onAddIcon={addIcon}
-                    onAddWidget={addWidget}
-                    onClose={closeContextMenu}
+                <Header />
+                <WidgetsGrid
+                    contextMenu={contextMenu}
+                    isAddWidgetModalOpen={isAddWidgetModalOpen}
+                    setAddWidgetModalOpen={setAddWidgetModalOpen}
+                    closeContextMenu={closeContextMenu}
+                    openAddWidgetModal={openAddWidgetModal}
                 />
-            )}
+            </main>
         </div>
     );
 };

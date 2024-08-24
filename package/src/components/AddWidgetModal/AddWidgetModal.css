@@ -1,0 +1,119 @@
+/* Modal overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal content box */
+.modal-content {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 20px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Modal header */
+.modal-content h2 {
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Input fields in modal */
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Action buttons in modal */
+.modal-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.modal-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    width: 48%;
+    text-align: center;
+}
+
+.modal-actions button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Icon box styling */
+.icon-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: #444444;
+    border-radius: 15px;
+    cursor: pointer;
+    box-sizing: border-box;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+.icon-box img {
+    width: 70%;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.icon-box span {
+    font-size: 14px;
+    margin-top: auto;
+    text-align: center;
+}
+
+.confirmation {
+    display:flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.confirmation button{
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+.confirmation button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
