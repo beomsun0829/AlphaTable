@@ -6,38 +6,30 @@ import WidgetsGrid from './components/WidgetsGrid/WidgetsGrid';
 
 const App: React.FC = () => {
     const [isLeftSidebarOpen, setLeftSidebarOpen] = useState<boolean>(true);
-    const [contextMenu, setContextMenu] = useState<{ x: number; y: number } | null>(null);
-    const [isAddWidgetModalOpen, setAddWidgetModalOpen] = useState<boolean>(false);
+    const [contextMenu, setContextMenu] = useState<{ x: number; y: number; widgetIndex?: number } | null>(null);
 
     const toggleLeftSidebar = () => {
         setLeftSidebarOpen(!isLeftSidebarOpen);
-    };
-
-    const handleRightClick = (event: React.MouseEvent) => {
-        event.preventDefault();
-        setContextMenu({ x: event.clientX, y: event.clientY });
     };
 
     const closeContextMenu = () => {
         setContextMenu(null);
     };
 
-    const openAddWidgetModal = () => {
-        setContextMenu(null);
-        setAddWidgetModalOpen(true);
+    const handleContextMenu = (event: React.MouseEvent) => {
+        event.preventDefault();
+        setContextMenu({ x: event.clientX, y: event.clientY });
     };
 
     return (
-        <div className="app-container" onContextMenu={handleRightClick}>
+        <div className="app-container" onContextMenu={handleContextMenu}>
             <TabsSidebar isOpen={isLeftSidebarOpen} toggleSidebar={toggleLeftSidebar} />
             <main className="content">
                 <Header />
                 <WidgetsGrid
                     contextMenu={contextMenu}
-                    isAddWidgetModalOpen={isAddWidgetModalOpen}
-                    setAddWidgetModalOpen={setAddWidgetModalOpen}
                     closeContextMenu={closeContextMenu}
-                    openAddWidgetModal={openAddWidgetModal}
+                    setContextMenu={setContextMenu}
                 />
             </main>
         </div>

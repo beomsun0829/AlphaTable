@@ -20,29 +20,16 @@ const TabsSidebar: React.FC<TabsSidebarProps> = ({ isOpen, toggleSidebar }) => {
 
     useEffect(() => {
         if (isOpen) {
-            if (typeof chrome !== "undefined" && chrome.tabs) {
-                chrome.tabs.query({}, function(tabsArray: chrome.tabs.Tab[]) {
-                    const tabsList = tabsArray.map((tab: chrome.tabs.Tab) => ({
-                        id: tab.id as number,
-                        title: tab.title || 'No title',
-                        url: tab.url as string,
-                        favIconUrl: tab.favIconUrl,
-                        active: tab.active || false
-                    }));
-                    setTabs(tabsList);
-                });
-            } else {
-                const dummyTabs = [];
-                for (let i = 0; i < 30; i++) {
-                    dummyTabs.push({
-                        id: i + 1,
-                        title: `Dummy Tab ${i + 1}`,
-                        url: "https://example.com",
-                        favIconUrl: `path/to/icon${i + 1}.png`
-                    });
-                }
-                setTabs(dummyTabs);
-            }
+            chrome.tabs.query({}, function (tabsArray: chrome.tabs.Tab[]) {
+                const tabsList = tabsArray.map((tab: chrome.tabs.Tab) => ({
+                    id: tab.id as number,
+                    title: tab.title || 'No title',
+                    url: tab.url as string,
+                    favIconUrl: tab.favIconUrl,
+                    active: tab.active || false
+                }));
+                setTabs(tabsList);
+            });
         }
     }, [isOpen]);
 

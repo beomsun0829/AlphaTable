@@ -4,11 +4,9 @@ import ContextMenu from '../ContextMenu/ContextMenu';
 import AddWidgetModal from '../AddWidgetModal/AddWidgetModal';
 
 interface WidgetsGridProps {
-    contextMenu: { x: number; y: number } | null;
-    isAddWidgetModalOpen: boolean;
-    setAddWidgetModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+    contextMenu: { x: number; y: number; widgetIndex?: number } | null;
     closeContextMenu: () => void;
-    openAddWidgetModal: () => void;
+    setContextMenu: React.Dispatch<React.SetStateAction<{ x: number; y: number; widgetIndex?: number } | null>>;
 }
 
 interface Widget {
@@ -19,12 +17,11 @@ interface Widget {
 
 const WidgetsGrid: React.FC<WidgetsGridProps> = ({
     contextMenu,
-    isAddWidgetModalOpen,
-    setAddWidgetModalOpen,
     closeContextMenu,
-    openAddWidgetModal,
+    setContextMenu,
 }) => {
     const [widgets, setWidgets] = useState<Widget[]>([]);
+    const [isAddWidgetModalOpen, setAddWidgetModalOpen] = useState<boolean>(false);
 
     useEffect(() => {
         chrome.storage.sync.get(['widgets'], (result) => {
@@ -32,6 +29,15 @@ const WidgetsGrid: React.FC<WidgetsGridProps> = ({
                 setWidgets(result.widgets);
             }
         });
+
+        const handleClickOutside = () => {
+            closeContextMenu();
+        };
+
+        document.addEventListener('click', handleClickOutside);
+        return () => {
+            document.removeEventListener('click', handleClickOutside);
+        };
     }, []);
 
     const saveWidgetsToStorage = (widgets: Widget[]) => {
@@ -48,7 +54,23 @@ const WidgetsGrid: React.FC<WidgetsGridProps> = ({
     };
 
     const handleWidgetClick = (link: string) => {
-        window.location.href = link; // Open the link in the same tab
+        window.location.href = link;
+    };
+
+    const handleWidgetRightClick = (event: React.MouseEvent, index: number) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setContextMenu({ x: event.clientX, y: event.clientY, widgetIndex: index });
+    };
+
+    const deleteWidget = () => {
+        if (contextMenu && contextMenu.widgetIndex !== undefined) {
+            const newWidgets = [...widgets];
+            newWidgets.splice(contextMenu.widgetIndex, 1);
+            setWidgets(newWidgets);
+            saveWidgetsToStorage(newWidgets);
+            closeContextMenu();
+        }
     };
 
     return (
@@ -58,7 +80,8 @@ const WidgetsGrid: React.FC<WidgetsGridProps> = ({
                     key={index}
                     className="widget-box"
                     onClick={() => handleWidgetClick(widget.link)}
-                    style={{ cursor: 'pointer' }} // Indicate that the widget is clickable
+                    onContextMenu={(e) => handleWidgetRightClick(e, index)}
+                    style={{ cursor: 'pointer' }}
                 >
                     {widget.icon && <img src={widget.icon} alt={widget.name} />}
                     <span>{widget.name}</span>
@@ -68,8 +91,10 @@ const WidgetsGrid: React.FC<WidgetsGridProps> = ({
                 <ContextMenu
                     x={contextMenu.x}
                     y={contextMenu.y}
-                    onAddWidget={openAddWidgetModal}
+                    onAddWidget={() => setAddWidgetModalOpen(true)}
+                    onDeleteWidget={deleteWidget}
                     onClose={closeContextMenu}
+                    isWidget={contextMenu.widgetIndex !== undefined}
                 />
             )}
             {isAddWidgetModalOpen && (
