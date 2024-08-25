@@ -1,5 +1,8 @@
 /* ------ Sidebar General Styles ------ */
 .sidebar {
+    position: fixed;
+    margin: 20px;
+    border-radius: 12px;
     width: 250px;
     transition: width 0.2s ease;
     border: 0;
@@ -7,13 +10,13 @@
     display: flex;
     flex-direction: column;
     overflow-y: auto;
-    height: 100vh;
+    height: calc(100vh - 40px);
     backdrop-filter: blur(8px); /* Slight frosted glass effect */
     -webkit-backdrop-filter: blur(8px);
 }
 
 .sidebar.collapsed {
-    width: 50px;
+    width: 60px;
 }
 
 .sidebar ul {
@@ -26,7 +29,9 @@
 
 /* Tabs Sidebar Styling */
 .tabs-sidebar {
-    background: linear-gradient(to bottom, rgba(0, 26, 52, 0.3), rgba(36, 54, 71, 0.3)); /* Gradient background with transparency */
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     color: #ffffff;
     text-align: left;
 }
@@ -44,23 +49,21 @@
 }
 
 .tab-button {
+    background-color: rgba(100, 100, 100, 0.2);
     display: flex;
     align-items: center;
-    background-color: rgba(255, 255, 255, 0.07); /* Darker background for the button */
     color: #ffffff;
     border: none;
-    padding: 12px 15px;
-    height: 42px;
+    padding: 15px 22px;
+    height: 46px;
     width: 100%;
     cursor: pointer;
     text-align: left;
     transition: background-color 0.1s, transform 0.1s;
-    backdrop-filter: blur(8px); /* Light blur for the glass effect */
-    -webkit-backdrop-filter: blur(8px);
 }
 
 .sidebar.collapsed .tab-button {
-    height: 42px;
+    height: 46px;
 }
 
 .tab-button:hover {
@@ -78,19 +81,13 @@
     overflow: hidden;
     text-overflow: ellipsis;
     flex-grow: 1;
-    font-weight: 400; /* Normal weight */
-    font-size: 14px; /* Smaller font size */
-    color: #ffffff; /* Muted color for titles */
+    font-weight: 400;
+    font-size: 14px;
+    color: #ffffff;
 }
 
 .sidebar.collapsed .tab-title {
-    display: none; /* Hide title when sidebar is collapsed */
-}
-
-/* Updated gradient background for active tab */
-.active-tab {
-    background: linear-gradient(to right, rgba(0, 125, 255, 0.3), rgba(255, 255, 255, 0.05)); /* Gradient effect */
-    transition: background-color 0.1s, transform 0.1s;
+    display: none;
 }
 
 /* ------ Styles for Expand/Collapse Icons ------ */
@@ -98,9 +95,7 @@
     --color: #a5a5b0;
     --size: 24px;
     font-size: var(--size);
-    padding: 12px;
-    margin-bottom:10px;
-    margin-top:10px;
+    padding: 18px;
     display: flex;
     justify-content: flex-start; /* Align icons to the right */
     align-items: center; /* Center icons vertically */

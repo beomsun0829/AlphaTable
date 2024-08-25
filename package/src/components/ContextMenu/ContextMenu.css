@@ -1,20 +1,19 @@
 .context-menu {
     position: absolute;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
-    backdrop-filter: blur(10px); /* Blur the background behind the menu */
-    -webkit-backdrop-filter: blur(10px); /* Support for Safari */
-    color: #ffffff;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 12px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
     z-index: 1000;
-    padding: 0; /* Remove padding to align buttons edge to edge */
+    padding: 0;
     display: flex;
     flex-direction: column; /* Align items vertically */
 }
 
 .context-menu button {
     border: none;
-    border-radius: 0; /* Remove rounding between buttons */
+    border-radius: 0;
+    background: rgba(0, 0, 0, 0.5);
     padding: 10px 15px;
     color: #ffffff;
     cursor: pointer;
@@ -34,5 +33,5 @@
 }
 
 .context-menu button:hover {
-    background: rgba(255, 255, 255, 0.3); /* Slightly more opaque on hover */
+    background: rgba(100, 100, 100, 0.5);
 }
