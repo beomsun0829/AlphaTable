@@ -13,6 +13,8 @@
     overflow-y: auto;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.1);
 }
 
 .sidebar.collapsed {
@@ -106,8 +108,10 @@
     font-size: var(--size);
     padding: 18px;
     display: flex;
-    justify-content: flex-start; /* Align icons to the right */
-    align-items: center; /* Center icons vertically */
+    justify-content: flex-start;
+    /* Align icons to the right */
+    align-items: center;
+    /* Center icons vertically */
     position: relative;
     cursor: pointer;
     user-select: none;
@@ -127,11 +131,11 @@
     display: none;
 }
 
-.icon-container input:checked ~ img.expand {
+.icon-container input:checked~img.expand {
     display: none;
 }
 
-.icon-container input:checked ~ img.compress {
+.icon-container input:checked~img.compress {
     display: block;
 }
 
@@ -150,6 +154,7 @@
         transform: scale(0);
         opacity: 0;
     }
+
     50% {
         transform: scale(1.2);
     }
