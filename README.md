@@ -21,12 +21,15 @@ select "dist" directory
 ## Screenshots & Features
 
 New tab
+
 ![Screenshot 1](./screenshot/screenshot1.png)
 
 Pinned Icon
+
 ![Screenshot 2](./screenshot/screenshot2.png)
 
 Side pannel
+
 ![Screenshot 3](./screenshot/screenshot3.png)
 
 ## Contributing
