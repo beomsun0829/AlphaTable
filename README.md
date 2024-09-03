@@ -1,9 +1,8 @@
 # Let Tab
 
 OpenSource Chrome Extension Tab Manager
+
 ![Screenshot 1](./screenshot/screenshot1.png)
-![Screenshot 2](./screenshot/screenshot2.png)
-![Screenshot 3](./screenshot/screenshot3.png)
 
 ## Installation
 
@@ -18,6 +17,17 @@ npm run build
 Go to chrome://extensions
 Click "Load unpacked"
 select "dist" directory
+
+## Screenshots & Features
+
+New tab
+![Screenshot 1](./screenshot/screenshot1.png)
+
+Pinned Icon
+![Screenshot 2](./screenshot/screenshot2.png)
+
+Side pannel
+![Screenshot 3](./screenshot/screenshot3.png)
 
 ## Contributing
 
